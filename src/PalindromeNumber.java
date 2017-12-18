@@ -8,31 +8,14 @@ public class PalindromeNumber {
         System.out.println( isPalindrome( 12321));
     }
 
-
-    public static boolean isPalindrome(int x){
-
-        //if negative return false because palindromes can not be negative
-        if(x <0){
-            return false;
+    public static  boolean isPalindrome(int x) {
+        if (x<0 || (x!=0 && x%10==0)) return false;
+        int rev = 0;
+        while (x>rev){
+            rev = rev*10 + x%10;
+            x = x/10;
         }
-        int tempPassed = x;
-        int storage = 0;
-
-        //Same idea as reverse int, avoids overflow of Integer.reverse
-        while(tempPassed > 0){
-            storage = storage * 10 + tempPassed%10;
-            tempPassed = tempPassed/10;
-        }
-        //if they are a copy they are a palindrome.
-        if(storage == x){
-            return true;
-        }
-
-
-
-        return false;
-
+        return (x==rev || x==rev/10);
     }
-
 
 }
